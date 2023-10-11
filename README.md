@@ -22,3 +22,7 @@ Get resources
 
 Describe resources
 <pre>kubectl describe yourobject</pre>
+
+## Apply changes 
+
+<pre>kubectl apply -f configurationfile.yaml</pre>
