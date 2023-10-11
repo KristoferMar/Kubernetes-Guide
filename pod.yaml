@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: my-pod
   labels:
-    component: web
+    component: web # Important for recognition
 spec:
   containers:
   - name: my-container
