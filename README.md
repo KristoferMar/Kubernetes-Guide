@@ -15,7 +15,7 @@ Object Types:
     - LoadBalancer
     - Ingress
  
-## Investigation commands
+## Investigation resources
 
 Get resources 
 <pre>kubectl get yourobject</pre>
@@ -23,6 +23,9 @@ Get resources
 Describe resources
 <pre>kubectl describe yourobject</pre>
 
-## Apply changes 
+## Apply resources
 
 <pre>kubectl apply -f configurationfile.yaml</pre>
+
+## Delete resources
+<pre>kubectl delete -f yourobject</pre>
