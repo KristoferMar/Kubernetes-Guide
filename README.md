@@ -14,3 +14,11 @@ Object Types:
     - NodePort: Exposes a container to the outside world (only good for dev purposes)
     - LoadBalancer
     - Ingress
+ 
+## Investigation commands
+
+Get resources 
+<pre>kubectl get yourobject</pre>
+
+Describe resources
+<pre>kubectl describe yourobject</pre>
