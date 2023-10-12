@@ -83,3 +83,25 @@ Role Based Access Control
 - Limits who can access and modify objects in our cluster
 - Enabled on Google Cloud by default
 - Tiller wants to make changes to our cluster, so it needs to get some permissions set
+
+
+# Certmanger
+Used to manage SSL Certificates
+<a>github.com/jetstack/cert-manager</a>
+
+Install via helm 
+
+Install repo
+<pre>helm repo add jetstack https://charts.jetstack.io</pre>
+
+Update repo
+<pre>helm repo update</pre>
+
+Install cert-manager
+<pre>helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.8.0 --set installCRDs=true</pre>
+
+### Certificate
+Object describing details about the certificate that should be obtained.
+
+### Issuer
+Object telling cert Manager where to get the certificate from.

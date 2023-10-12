@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: minmarketing-dk-tls
+spec:
+  secretName: test-dk
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: test.dk
+  dnsNames:
+    - test.dk
+    - www.test.dk
