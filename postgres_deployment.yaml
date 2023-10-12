@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: postgres
+  template:
+    metadata:
+      component: postgres # Looks for services with the label "web"
+    spec:
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
+      containers:
+        - name: postgres
+          image: postgres # We increment version name to update the deployment with the new image
+          ports:
+            - containerPort: 5421
+          volumeMounts:
+            - name: postgres-storage # Volume name and volume mount name must match
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres
