@@ -10,10 +10,12 @@ Object Types:
 - Pods: Runs one or more closely related containers
 
 - Services: Sets up networking in Kubernetes Cluster
-    - ClusterIP: Exposes a set of pods to other objects in the cluster
-    - NodePort: Exposes a container to the outside world (only good for dev purposes)
-    - LoadBalancer
-    - Ingress
+    - ClusterIP     : Exposes a set of pods to other objects in the cluster
+    - NodePort      : Exposes a container to the outside world (only good for dev purposes)
+    - LoadBalancer  : Legacy way of getting network traffic into a cluster
+    - Ingress       : Exposes a set of services to the outside world
+
+Secrets: Securely stores a piece of information in the cluster, such as a database password
  
 ## Investigation resources
 
@@ -51,3 +53,33 @@ Apply whole directories with yaml files
 "Persistent Volume Claim"
 - An object that "fabricates" and creates the required volume on the fly.
 - It claims space ahead of time
+
+# Secrets
+We create all secrets manually 
+<pre>kubectl create secret generic 'secret_name' --from-literal key=value</pre>
+
+
+# Ingress
+There are two different kinds of ingress controllers avaiable and there is a big difference between them
+
+ingress-nginx: A community led project
+- github.com/kubernetes/ingress-nginx
+
+kubernetes-ingress: A project led by the company nginx
+- github.com/nginxinc/kubernetes-ingress
+
+# Helm
+Helm is a program we can use to administer third party software in our cluster.
+
+
+Install: sudo dnf install helm
+
+https://helm.sh/docs/intro/install/#from-script
+
+
+# RBAC
+Role Based Access Control
+
+- Limits who can access and modify objects in our cluster
+- Enabled on Google Cloud by default
+- Tiller wants to make changes to our cluster, so it needs to get some permissions set

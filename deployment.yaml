@@ -39,6 +39,16 @@ spec:
           image: stephengrider/multi-server
           ports:
             - containerPort: 5000
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: 6379
+            - name: PGUSER      # Env variable taken from secret
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
 
 # You can update deployment manuelly like this 
 kubectl set image <object_type> / <object_name> <container_name> = <new_image_to_use>
