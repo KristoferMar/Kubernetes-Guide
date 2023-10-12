@@ -11,3 +11,19 @@ spec:
     nodePort: 30080   # Port on the node that we can reach from outside the cluster
   selector:
     component: web
+
+
+--- # ClusterIP service
+--- # NodePort service
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: ClusterIP     # Provides access to other pods inside the cluster from within the cluster
+  ports:
+  - port: 80          # Used for other pods to reach into this port (inside the cluster)
+    targetPort: 80    # Port inside the container we want to open up traffic to
+    nodePort: 30080   # Port on the node that we can reach from outside the cluster
+  selector:
+    component: web

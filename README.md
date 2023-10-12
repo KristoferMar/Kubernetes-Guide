@@ -10,7 +10,7 @@ Object Types:
 - Pods: Runs one or more closely related containers
 
 - Services: Sets up networking in Kubernetes Cluster
-    - ClusterIP
+    - ClusterIP: Exposes a set of pods to other objects in the cluster
     - NodePort: Exposes a container to the outside world (only good for dev purposes)
     - LoadBalancer
     - Ingress

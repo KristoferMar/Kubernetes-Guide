@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -13,6 +14,31 @@ spec:
     spec:
       containers:
         - name: client
-          image: stephengrider/multi-client
+          image: stephengrider/multi-client:v1 # We increment version name to update the deployment with the new image
           ports:
             - containerPort: 3000
+
+
+--- # Express server deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: server
+  template:
+    metadata:
+      labels:
+        component: server # Looks for services with the label "server"
+    spec:
+      containers:
+        - name: server
+          image: stephengrider/multi-server
+          ports:
+            - containerPort: 5000
+
+# You can update deployment manuelly like this 
+kubectl set image <object_type> / <object_name> <container_name> = <new_image_to_use>
